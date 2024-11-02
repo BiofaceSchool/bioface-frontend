@@ -7,6 +7,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register-screen',
@@ -19,7 +20,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatFormFieldModule,
     MatIconModule,
     FormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
   templateUrl: './register-screen.component.html',
   styleUrl: './register-screen.component.css'
@@ -30,5 +31,17 @@ export class RegisterScreenComponent {
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
+  }
+
+  constructor(
+    private readonly router: Router,
+  ) {
+  }
+
+  protected readonly onsubmit = onsubmit;
+
+  onSubmit() {
+    this.form = true;
+    this.router.navigate(['/home']).then(r => console.log('Navigation a /home:', r));
   }
 }

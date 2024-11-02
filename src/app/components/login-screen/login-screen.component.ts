@@ -5,6 +5,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-login-screen',
@@ -15,7 +16,8 @@ import {MatInputModule} from '@angular/material/input';
     MatSelectModule,
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    RouterLink
   ],
   templateUrl: './login-screen.component.html',
   styleUrl: './login-screen.component.css'
