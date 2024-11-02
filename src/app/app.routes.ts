@@ -19,6 +19,7 @@ const routes: Routes = [
   },
   {path: 'home', component: HomeScreenComponent},
   {path: 'login', component: LoginScreenComponent},
+  {path: 'register', component: RegisterScreenComponent},
 ];
 
 @NgModule({
