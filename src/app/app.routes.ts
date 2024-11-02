@@ -12,13 +12,18 @@ import { SearchScreenComponent } from './components/search-screen/search-screen.
 
 
 const routes: Routes = [
-    {path: 'home', component: HomeScreenComponent},
-    {path: 'login', component: LoginScreenComponent},
-  ];
-  
-  @NgModule({
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {path: 'home', component: HomeScreenComponent},
+  {path: 'login', component: LoginScreenComponent},
+];
+
+@NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
-  })
-  export class AppRoutingModule {}
-  export { routes }; 
+})
+export class AppRoutingModule {}
+export { routes };
