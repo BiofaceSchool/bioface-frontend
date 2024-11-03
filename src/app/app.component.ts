@@ -4,11 +4,14 @@ import { HomeScreenComponent } from "./components/home-screen/home-screen.compon
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileScreenComponent } from './components/profile-screen/profile-screen.component';
 import { LoginScreenComponent } from './components/login-screen/login-screen.component';
+import {SearchScreenComponent} from "./components/search-screen/search-screen.component";
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HomeScreenComponent, HeaderComponent, ProfileScreenComponent, LoginScreenComponent],
+  imports: [HttpClientModule, RouterOutlet, HeaderComponent, SearchScreenComponent, HomeScreenComponent, LoginScreenComponent, ProfileScreenComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
