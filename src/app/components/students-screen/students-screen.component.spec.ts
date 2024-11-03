@@ -1,22 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FacultyScreenComponent } from './faculty-screen.component';
+import { StudentsScreenComponent } from './students-screen.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('FacultyScreenComponent', () => {
-  let component: FacultyScreenComponent;
-  let fixture: ComponentFixture<FacultyScreenComponent>;
+describe('StudentsScreenComponent', () => {
+  let component: StudentsScreenComponent;
+  let fixture: ComponentFixture<StudentsScreenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        FacultyScreenComponent,
+        StudentsScreenComponent,
         HttpClientTestingModule,
         RouterTestingModule
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FacultyScreenComponent);
+    fixture = TestBed.createComponent(StudentsScreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,39 +1,40 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Faculty } from '../../interfaces/university';
+import { Student } from '../../interfaces/university';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
-  selector: 'app-faculty-screen',
-  templateUrl: './faculty-screen.component.html',
+  selector: 'app-students-screen',
+  templateUrl: './students-screen.component.html',
   imports: [CommonModule, HttpClientModule],
   standalone: true,
-  styleUrls: ['./faculty-screen.component.css'],
+  styleUrls: ['./students-screen.component.css'],
   providers: [DataService]
 })
-export class FacultyScreenComponent implements OnInit, OnDestroy {
-  faculties: Faculty[] = [];
-  filteredFaculties: Faculty[] = [];
+export class StudentsScreenComponent implements OnInit, OnDestroy {
+  students: Student[] = [];
+  filteredStudents: Student[] = [];
   searchTerm: string = '';
   loading: boolean = false;
   campusId: number = 0;
+  facultyId: number = 0;
   private searchSubject = new Subject<string>();
   private subscription: Subscription = new Subscription();
 
   constructor(
     private dataService: DataService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.campusId = +params['campusId'];
-      this.loadFaculties();
+      this.facultyId = +params['facultyId'];
+      this.loadStudents();
     });
     this.setupSearch();
   }
@@ -42,17 +43,17 @@ export class FacultyScreenComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  private loadFaculties(): void {
+  private loadStudents(): void {
     this.loading = true;
     this.subscription.add(
-      this.dataService.getFaculties(this.campusId).subscribe({
+      this.dataService.getStudents(this.campusId, this.facultyId).subscribe({
         next: (data) => {
-          this.faculties = data;
-          this.filteredFaculties = data;
+          this.students = data;
+          this.filteredStudents = data;
           this.loading = false;
         },
         error: (error) => {
-          console.error('Error loading faculties:', error);
+          console.error('Error loading students:', error);
           this.loading = false;
         }
       })
@@ -65,7 +66,7 @@ export class FacultyScreenComponent implements OnInit, OnDestroy {
         debounceTime(300),
         distinctUntilChanged()
       ).subscribe(searchTerm => {
-        this.filterFaculties(searchTerm);
+        this.filterStudents(searchTerm);
       })
     );
   }
@@ -75,17 +76,17 @@ export class FacultyScreenComponent implements OnInit, OnDestroy {
     this.searchSubject.next(searchTerm);
   }
 
-  private filterFaculties(searchTerm: string): void {
-    this.filteredFaculties = this.faculties.filter(faculty =>
-      faculty.name.toLowerCase().includes(searchTerm.toLowerCase())
+  private filterStudents(searchTerm: string): void {
+    this.filteredStudents = this.students.filter(student =>
+      `${student.name} ${student.lastname}`.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
 
-  navigateToStudents(facultyId: number): void {
-    this.router.navigate(['/students', this.campusId, facultyId]);
+  handleError(student: Student): void {
+    console.error(`Error loading image for student: ${student.name} ${student.lastname}`);
   }
 
-  handleError(faculty: Faculty): void {
-    console.error(`Error loading image for faculty: ${faculty.name}`);
+  getFullName(student: Student): string {
+    return `${student.name} ${student.lastname}`;
   }
 }
