@@ -13,6 +13,12 @@ import { StudentsScreenComponent } from './components/students-screen/students-s
 import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
+
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },  
   { path: 'home', component: HomeScreenComponent },
   { path: 'login', component: LoginScreenComponent },
   { path: 'register', component: RegisterScreenComponent },
@@ -21,6 +27,7 @@ const routes: Routes = [
   { path: 'faculty/:campusId', component: FacultyScreenComponent },
   { path: 'students/:campusId/:facultyId', component: StudentsScreenComponent },
   { path: 'help', component: HelpScreenComponent },
+
 ];
 
   @NgModule({
