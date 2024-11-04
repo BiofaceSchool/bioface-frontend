@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CampusScreenComponent } from './components/campus-screen/campus-screen.component';
+
 import { ProfileScreenComponent } from './components/profile-screen/profile-screen.component';
 import { FacultyScreenComponent } from './components/faculty-screen/faculty-screen.component';
 import { HeaderComponent } from './components/header/header.component';
