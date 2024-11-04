@@ -38,7 +38,6 @@ export class RegisterScreenComponent {
   ) {
   }
 
-  protected readonly onsubmit = onsubmit;
 
   onSubmit() {
     this.form = true;
