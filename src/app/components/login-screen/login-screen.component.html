@@ -4,17 +4,27 @@
       <mat-card-title class="title">Inicio de Sesión</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form>
+      <form (ngSubmit)="onSubmit()">
         <mat-form-field appearance="fill" class="full-width">
-          <mat-label>Usuario</mat-label>
-          <input matInput placeholder="Ingresa tu usuario" required>
+          <mat-label>Email</mat-label>
+          <input matInput
+                 type="email"
+                 [(ngModel)]="loginData.email"
+                 name="email"
+                 placeholder="Ingresa tu email"
+                 required>
         </mat-form-field>
         <mat-form-field class="full-width">
           <mat-label>Contraseña</mat-label>
-          <input matInput [type]="hide() ? 'password' : 'text'">
+          <input matInput
+                 [type]="hide() ? 'password' : 'text'"
+                 [(ngModel)]="loginData.password"
+                 name="password"
+                 required>
           <button
             mat-icon-button
             matSuffix
+            type="button"
             (click)="clickEvent($event)"
             [attr.aria-label]="'Mostrar/ocultar contraseña'"
             [attr.aria-pressed]="hide()"
@@ -22,10 +32,15 @@
             <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
         </mat-form-field>
-        <button routerLink="/home" mat-raised-button color="primary" class="btn full-width">Iniciar Sesión</button>
+        <button mat-raised-button
+                color="primary"
+                class="btn full-width"
+                type="submit">
+          Iniciar Sesión
+        </button>
       </form>
       <div class="register-link">
-        <p>¿No tienes cuenta? <a href="/register">Regístrate aquí</a></p>
+        <p>¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a></p>
       </div>
     </mat-card-content>
   </mat-card>

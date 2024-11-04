@@ -8,12 +8,13 @@ import {SearchScreenComponent} from "./components/search-screen/search-screen.co
 import { HttpClientModule } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
 import {CommonModule} from "@angular/common";
+import {RegisterScreenComponent} from "./components/register-screen/register-screen.component";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ CommonModule, HttpClientModule, RouterOutlet, HeaderComponent, SearchScreenComponent, HomeScreenComponent, LoginScreenComponent, ProfileScreenComponent],
+  imports: [RegisterScreenComponent, CommonModule, HttpClientModule, RouterOutlet, HeaderComponent, SearchScreenComponent, HomeScreenComponent, LoginScreenComponent, ProfileScreenComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

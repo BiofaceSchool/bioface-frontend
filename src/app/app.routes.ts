@@ -11,6 +11,7 @@ import { RegisterScreenComponent } from './components/register-screen/register-s
 import { SearchScreenComponent } from './components/search-screen/search-screen.component';
 import { StudentsScreenComponent } from './components/students-screen/students-screen.component';
 import { HttpClientModule } from '@angular/common/http';
+import {BrowserModule} from "@angular/platform-browser";
 
 const routes: Routes = [
 
@@ -31,7 +32,7 @@ const routes: Routes = [
 ];
 
   @NgModule({
-    imports: [RouterModule.forRoot(routes), HttpClientModule],
+    imports: [RouterModule.forRoot(routes),  BrowserModule, HttpClientModule],
     exports: [RouterModule],
   })
   export class AppRoutingModule {}
