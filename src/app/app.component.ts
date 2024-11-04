@@ -26,9 +26,9 @@ export class AppComponent implements OnInit{
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    // Escucha los cambios de la ruta
+
     this.router.events.subscribe(() => {
-      // Verifica la ruta actual y oculta el header si es login o register
+
       this.showHeader = !(this.router.url === '/login' || this.router.url === '/register');
     });
   }
