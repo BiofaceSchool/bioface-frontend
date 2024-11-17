@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ProfileScreenComponent } from './components/profile-screen/profile-screen.component';
 import { FacultyScreenComponent } from './components/faculty-screen/faculty-screen.component';
-import { HeaderComponent } from './components/header/header.component';
 import { HelpScreenComponent } from './components/help-screen/help-screen.component';
 import { HomeScreenComponent } from './components/home-screen/home-screen.component';
 import { LoginScreenComponent } from './components/login-screen/login-screen.component';

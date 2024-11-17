@@ -1,0 +1,11 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page-container {
+  background-color: #e6b90f; /* Color de fondo */
+  height: 100vh; /* Asegura que ocupe el 100% de la altura de la ventana */
+  width: 100%;   /* Asegura que ocupe el 100% del ancho disponible */
+}
